@@ -1,23 +1,17 @@
-; -----------------------------------------------------------------------------
 ; A Genetic Algorithm to Evolve a Binary String in MeTTa
-;
+
 ; This script implements the core components of a genetic algorithm to find a
-; target binary string. It demonstrates concepts like fitness calculation,
-; selection, crossover, and mutation using a functional, term-rewriting style.
-; -----------------------------------------------------------------------------
+; target binary string.
 
 
-; =============================================================================
 ; 1. CONFIGURATION PARAMETERS
-; =============================================================================
-; We define the core parameters of our GA as global symbols.
+; Define the core parameters of our GA as global symbols.
 ; A symbol is defined to be equal to its value directly.
 
-!(println! "Hello, world!")
-
+!(println! "Starting Genetic Algorithm...")
 
 (: TARGET_STRING (List Number))
-(= TARGET_STRING (1 1 0 1 0 1 0 0 1 1))
+(= TARGET_STRING (1 1 1 1 1 0 0 0 0 0))
 
 (: CHROMOSOME_LENGTH Number)
 (= CHROMOSOME_LENGTH (len TARGET_STRING))
@@ -26,16 +20,14 @@
 (= POPULATION_SIZE 100)
 
 (: MUTATION_RATE Number)
-(= MUTATION_RATE 0.01)
+(= MUTATION_RATE 0.1)
 
 (: CROSSOVER_RATE Number)
 (= CROSSOVER_RATE 0.95)
 
 
-; =============================================================================
 ; 2. UTILITY FUNCTIONS
-; =============================================================================
-; MeTTa is minimal, so we first define common list-processing utilities.
+; MeTTa is minimal, so first define common list-processing utilities.
 
 ; (sum-list <list>) - Sums a list of numbers.
 (: sum-list (-> (List Number) Number))
@@ -58,9 +50,8 @@
        ""
        (string-concat (number-to-string (car $l)) (list-to-string (cdr $l)))))
 
-; =============================================================================
+
 ; 3. CORE GENETIC ALGORITHM COMPONENTS
-; =============================================================================
 
 ; -----------------------------------------------------------------------------
 ; A. Population and Individual Creation
@@ -144,9 +135,7 @@
              (cons mutated-gene (mutate (cdr $ind))))))
 
 
-; =============================================================================
 ; 4. MAIN EVOLUTIONARY LOOP
-; =============================================================================
 
 ; (find-best-individual <pop>) - Finds the best individual and its fitness.
 (: find-best-individual (-> (List (List Number)) (List Atom)))
@@ -162,6 +151,7 @@
                                        (loop (cdr $p) (cdr $s) current_i current_f)
                                        (loop (cdr $p) (cdr $s) $best_i $best_f)))))))
                   (loop $pop $fitness-scores () -1))))
+
 
 
 ; (run-one-generation <pop>) - Creates the next generation of the population.
@@ -205,9 +195,7 @@
                        (println! "\nSolution found!")
                        (run-ga (run-one-generation $pop) (+ $gen 1) $max_gen))))))
 
-; =============================================================================
 ; 5. EXECUTION
-; =============================================================================
 
 ; Kick off the Genetic Algorithm
 !(let* ((initial-population (create-population POPULATION_SIZE CHROMOSOME_LENGTH)))
