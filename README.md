@@ -25,7 +25,7 @@ genetic-algorithm/
 └── README.md                         # This file
 ```
 
-## 🚀 Features
+## Features
 
 ### Core GA Components Implemented
 
@@ -36,8 +36,15 @@ genetic-algorithm/
 - **Bit-Flip Mutation**: Random bit flipping with configurable rate
 - **Population Evolution**: Generational replacement with elitism
 
+### Configuration Parameters
 
-## 📋 Requirements
+- **Population Size**: 100 individuals
+- **Mutation Rate**: 0.1 (10% chance per bit)
+- **Crossover Rate**: 0.95 (95% chance per pair)
+- **Target String**: Configurable 10-bit binary string
+- **Max Generations**: 500 (with early termination on solution)
+
+## Requirements
 
 ### Python Implementation
 ```bash
@@ -93,11 +100,6 @@ metta MeTTa_Genetic_Algorithm.metta
 6. **Replacement**: Replace population with new generation
 7. **Termination**: Stop when target is found or max generations reached
 
-## Learning Resources
-
-- **MeTTa Tutorial**: See `tutorial.metta` for MeTTa language basics
-- **Genetic Algorithm Theory**: Understanding evolutionary computation principles
-- **Hyperon Documentation**: For advanced MeTTa features
 
 ## 🤝 Contributing
 
