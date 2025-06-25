@@ -36,13 +36,6 @@ genetic-algorithm/
 - **Bit-Flip Mutation**: Random bit flipping with configurable rate
 - **Population Evolution**: Generational replacement with elitism
 
-### Configuration Parameters
-
-- **Population Size**: 100 individuals
-- **Mutation Rate**: 0.1 (10% chance per bit)
-- **Crossover Rate**: 0.95 (95% chance per pair)
-- **Target String**: Configurable 10-bit binary string
-- **Max Generations**: 500 (with early termination on solution)
 
 ## 📋 Requirements
 
